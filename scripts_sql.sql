@@ -34,20 +34,27 @@ create table avaliacaocontinua.works(
 
 -- 06. Criar referencia entre works e employee
 
-alter table avaliacaocontinua.employee
-	add constraint fk_personname
+alter table avaliacaocontinua.works
+	add constraint fk_personname_works
 	foreign key (person_name)
-	references avaliacaocontinua.works(person_name)
+	references avaliacaocontinua.employee(person_name)
 	on delete cascade
 	on update cascade;
 
 -- 07. Criar referencia entre works e company
 
-alter table avaliacaocontinua.company
+alter table avaliacaocontinua.works
 	add constraint fk_companyname
 	foreign key (company_name)
-	references avaliacaocontinua.works(company_name)
+	references avaliacaocontinua.company(company_name)
 	on delete cascade
 	on update cascade;
 
 -- 08. Criar referencia entre manages e employee
+
+alter table avaliacaocontinua.manages
+	add constraint fk_personname_manages
+	foreign key (person_name)
+	references avaliacaocontinua.employee(person_name)
+	on delete cascade
+	on update cascade;
